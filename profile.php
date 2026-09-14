@@ -25,22 +25,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_photo'])) {
     if ($file['error'] === UPLOAD_ERR_OK) {
         if (in_array($fileExt, $allowedExts)) {
             if ($file['size'] <= MAX_FILE_SIZE) {
-                $filename = 'user_' . getCurrentUserId() . '.' . $fileExt;
-                $filepath = $uploadDir . $filename;
+                // Get image info and compress
+                $imageInfo = getimagesize($file['tmp_name']);
+                $width = $imageInfo[0];
+                $height = $imageInfo[1];
+                $type = $imageInfo[2];
 
-                // Delete old profile pic
-                $oldFiles = glob($uploadDir . 'user_' . getCurrentUserId() . '.*');
-                foreach ($oldFiles as $oldFile) {
-                    unlink($oldFile);
-                }
+                // Calculate new dimensions (max 400x400)
+                $maxWidth = 400;
+                $maxHeight = 400;
+                $ratio = min($maxWidth / $width, $maxHeight / $height);
+                $newWidth = (int)($width * $ratio);
+                $newHeight = (int)($height * $ratio);
 
-                if (move_uploaded_file($file['tmp_name'], $filepath)) {
+                // Load source image
+                $sourceImage = match ($type) {
+                    IMAGETYPE_JPEG => imagecreatefromjpeg($file['tmp_name']),
+                    IMAGETYPE_PNG => imagecreatefrompng($file['tmp_name']),
+                    IMAGETYPE_GIF => imagecreatefromgif($file['tmp_name']),
+                    default => null
+                };
+
+                if ($sourceImage) {
+                    // Create new image
+                    $newImage = imagecreatetruecolor($newWidth, $newHeight);
+
+                    // Preserve transparency for PNG/GIF
+                    if ($type == IMAGETYPE_PNG || $type == IMAGETYPE_GIF) {
+                        imagealphablending($newImage, false);
+                        imagesavealpha($newImage, true);
+                        $transparent = imagecolorallocatealpha($newImage, 0, 0, 0, 127);
+                        imagefill($newImage, 0, 0, $transparent);
+                    }
+
+                    // Resize
+                    imagecopyresampled($newImage, $sourceImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+                    // Generate filename
+                    $filename = 'user_' . getCurrentUserId() . '.jpg'; // Always save as JPG for consistency
+                    $filepath = $uploadDir . $filename;
+
+                    // Delete old profile pics
+                    $oldFiles = glob($uploadDir . 'user_' . getCurrentUserId() . '.*');
+                    foreach ($oldFiles as $oldFile) {
+                        unlink($oldFile);
+                    }
+
+                    // Save compressed image (75% quality for JPG)
+                    imagejpeg($newImage, $filepath, 75);
+
+                    imagedestroy($sourceImage);
+                    imagedestroy($newImage);
+
+                    // Update database
                     $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE id = ?");
                     $stmt->execute([$filename, getCurrentUserId()]);
+
                     $success = 'Profile picture updated!';
-                    $user['profile_photo'] = $filename;  // ← Fixed: was profile_pic
+                    $user['profile_photo'] = $filename;
                 } else {
-                    $error = 'Failed to upload image';
+                    $error = 'Failed to process image';
                 }
             } else {
                 $error = 'File size must be less than 2MB';
@@ -235,5 +279,10 @@ include 'includes/header.php';
     </div>
 </div>
 
+<script>
+    document.getElementById('profilePic').addEventListener('click', function() {
+        document.getElementById('profilePicUpload').click();
+    });
+</script>
 
 <?php include 'includes/footer.php'; ?>
