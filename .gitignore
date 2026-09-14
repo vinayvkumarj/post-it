@@ -1,0 +1,6 @@
+/config/database.php
+
+assets/uploads/*
+!assets/uploads/.gitkeep
+assets/uploads/profiles/*
+!assets/uploads/profiles/.gitkeep

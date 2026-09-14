@@ -1,0 +1,17 @@
+# Prevent directory browsing
+Options -Indexes
+
+# Default charset
+AddDefaultCharset UTF-8
+
+# Protect config folder
+<IfModule mod_rewrite.c>  
+    RewriteEngine On
+    RewriteRule ^config/ - [F,L]
+</IfModule>
+
+# Protect includes folder
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>

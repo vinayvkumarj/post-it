@@ -1,0 +1,1860 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap");
+
+/* ============================================
+   1. BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  background: #ffffff;
+  color: #202124;
+  line-height: 1.6;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================
+   2. DARK MODE
+   ============================================ */
+
+body.dark-mode {
+  background: #202124;
+  color: #ffffff;
+}
+
+body.dark-mode .header {
+  background: #202124;
+  border-bottom-color: #3c4043;
+}
+
+body.dark-mode .logo-name {
+  color: #e8eaed;
+}
+
+body.dark-mode .nav-link {
+  color: #9aa0a6;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+  color: #8ab4f8;
+}
+
+body.dark-mode .nav-link.active {
+  background: rgba(138, 180, 248, 0.15);
+}
+
+body.dark-mode .main-content {
+  background: #202124;
+}
+
+body.dark-mode .note-card {
+  background: #3c4043;
+  border-color: #5f6368;
+  color: #e8eaed;
+}
+
+body.dark-mode .note-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .note-title {
+  color: #e8eaed;
+}
+
+body.dark-mode .note-description {
+  color: #e0e0e0;
+}
+
+body.dark-mode .note-footer {
+  border-top-color: #5f6368;
+  color: #e0e0e0;
+}
+
+body.dark-mode .note-date {
+  color: #b0b0b0;
+}
+
+body.dark-mode .note-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .section-title {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-content {
+  background: #3c4043;
+}
+
+body.dark-mode .modal-title-input::placeholder,
+body.dark-mode .form-input::placeholder {
+  color: #9aa0a6;
+}
+
+body.dark-mode #noteTitle,
+body.dark-mode #noteDescription,
+body.dark-mode .modal-title-input,
+body.dark-mode .form-input {
+  color: #ffffff !important;
+}
+
+body.dark-mode .close-btn {
+  color: #9aa0a6;
+}
+
+body.dark-mode .close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8eaed;
+}
+
+body.dark-mode .modal-footer-main {
+  border-top-color: #5f6368;
+}
+
+body.dark-mode .modal-footer-info {
+  color: #b0b0b0;
+}
+
+body.dark-mode .modal-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .modal-icon.danger:hover {
+  background: rgba(250, 128, 114, 0.15);
+}
+
+body.dark-mode .dropdown-menu {
+  background: #3c4043;
+  border-color: #5f6368;
+}
+
+body.dark-mode .dropdown-menu a {
+  color: #ffffff;
+}
+
+body.dark-mode .dropdown-menu a:hover {
+  background: #5f6368;
+}
+
+body.dark-mode .form-container {
+  background: #3c4043;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .form-title {
+  color: #e8eaed;
+}
+
+body.dark-mode .form-group label {
+  color: #ffffff;
+}
+
+body.dark-mode .form-group input {
+  background: #202124;
+  border-color: #5f6368;
+  color: #ffffff;
+}
+
+body.dark-mode .form-group input:focus {
+  border-color: #8ab4f8;
+  outline: none;
+}
+
+body.dark-mode .btn {
+  background: #8ab4f8;
+  color: #202124;
+}
+
+body.dark-mode .btn:hover {
+  background: #aecbfa;
+}
+
+body.dark-mode .btn-link {
+  color: #8ab4f8;
+}
+
+body.dark-mode .btn-link:hover {
+  color: #aecbfa;
+}
+
+body.dark-mode .error {
+  background: rgba(250, 128, 114, 0.2);
+  color: #fa8072;
+}
+
+body.dark-mode .success {
+  background: rgba(138, 180, 248, 0.2);
+  color: #8ab4f8;
+}
+
+body.dark-mode .footer {
+  background: #202124;
+  color: #e8eaed;
+}
+
+body.dark-mode .fab {
+  background: #8ab4f8;
+  color: #202124;
+}
+
+body.dark-mode .empty-state {
+  color: #e0e0e0;
+}
+
+/* Dark mode note colors */
+body.dark-mode .note-card[style*="background-color: #ffffff"],
+body.dark-mode .note-card[style*="background-color: #fff"] {
+  background: #3c4043 !important;
+}
+
+body.dark-mode .note-card[style*="background-color: #FFF8E1"] {
+  background: #5c4a2a !important;
+}
+
+body.dark-mode .note-card[style*="background-color: #FFF475"] {
+  background: #7a6b1f !important;
+}
+
+body.dark-mode .note-card[style*="background-color: #CCFF90"] {
+  background: #4a6b2a !important;
+}
+
+body.dark-mode .note-card[style*="background-color: #AECBFA"] {
+  background: #2a4a6b !important;
+}
+
+body.dark-mode .note-card[style*="background-color: #FDCFE8"] {
+  background: #6b2a4a !important;
+}
+
+/* Dark mode modal colors */
+body.dark-mode #noteTitle[style*="background-color: #ffffff"],
+body.dark-mode #noteTitle[style*="background-color: #fff"] {
+  background: #3c4043 !important;
+}
+
+body.dark-mode #noteDescription {
+  color: #ffffff;
+}
+
+body.dark-mode #noteTitle[style*="background-color: #FFF8E1"],
+body.dark-mode #noteDescription[style*="background-color: #FFF8E1"] {
+  background: #5c4a2a !important;
+}
+
+body.dark-mode #noteTitle[style*="background-color: #FFF475"],
+body.dark-mode #noteDescription[style*="background-color: #FFF475"] {
+  background: #7a6b1f !important;
+}
+
+body.dark-mode #noteTitle[style*="background-color: #CCFF90"],
+body.dark-mode #noteDescription[style*="background-color: #CCFF90"] {
+  background: #4a6b2a !important;
+}
+
+body.dark-mode #noteTitle[style*="background-color: #AECBFA"],
+body.dark-mode #noteDescription[style*="background-color: #AECBFA"] {
+  background: #2a4a6b !important;
+}
+
+body.dark-mode #noteTitle[style*="background-color: #FDCFE8"],
+body.dark-mode #noteDescription[style*="background-color: #FDCFE8"] {
+  background: #6b2a4a !important;
+}
+
+/* Password field in dark mode */
+body.dark-mode .form-group input[type="password"] {
+  color: #ffffff !important;
+  -webkit-text-security: disc !important;
+}
+
+body.dark-mode .form-group input {
+  color: #ffffff;
+  caret-color: #ffffff;
+}
+
+/* Dark mode color swatches */
+body.dark-mode .color-circle[data-color="#ffffff"],
+body.dark-mode .color-circle[data-color="#fff"] {
+  background: #3c4043 !important;
+}
+
+body.dark-mode .color-circle[data-color="#FFF8E1"] {
+  background: #5c4a2a !important;
+}
+
+body.dark-mode .color-circle[data-color="#FFF475"] {
+  background: #7a6b1f !important;
+}
+
+body.dark-mode .color-circle[data-color="#CCFF90"] {
+  background: #4a6b2a !important;
+}
+
+body.dark-mode .color-circle[data-color="#AECBFA"] {
+  background: #2a4a6b !important;
+}
+
+body.dark-mode .color-circle[data-color="#FDCFE8"] {
+  background: #6b2a4a !important;
+}
+
+/* ============================================
+   3. HEADER
+   ============================================ */
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: #505050;
+  transition: color 0.3s;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.logo img {
+  width: 620px;
+  height: 620px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #1a73e8;
+}
+
+.nav-link.active {
+  background: rgba(26, 115, 232, 0.1);
+}
+
+/* Header Responsive */
+@media (max-width: 900px) {
+  .header-content {
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .header-right,
+  .main-nav {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+
+  .logo-name {
+    font-size: 1.25rem;
+  }
+
+  .header-right,
+  .main-nav {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-content {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .logo-name {
+    font-size: 1.1rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+}
+
+/* ============================================
+   4. PROFILE DROPDOWN
+   ============================================ */
+
+.settings-container {
+  position: relative;
+  margin-left: 20px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  display: none;
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background: #f5f5f5;
+}
+
+.dropdown-menu a:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-menu a:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.dropdown-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+/* ============================================
+   5. MAIN CONTENT & LAYOUT
+   ============================================ */
+
+.main-content {
+  max-width: 1200px;
+  margin: 20px auto;
+  min-height: calc(100vh - 200px);
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1rem 0.75rem 4rem;
+  }
+}
+
+/* ============================================
+   6. FOOTER
+   ============================================ */
+
+.footer {
+  background: #ffffff;
+  color: #202124;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  border-top: 1px solid #ddd;
+}
+
+body.dark-mode .footer {
+  background: #202124;
+  color: #e8eaed;
+  border-top-color: #3c4043;
+}
+
+/* ============================================
+   7. NOTES PAGE
+   ============================================ */
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  margin: 2rem 0 1rem 0;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .notes-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* ============================================
+   8. NOTE CARDS
+   ============================================ */
+
+.note-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background-color 0.3s,
+    border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.note-card-content {
+  flex: 1;
+  margin-bottom: 12px;
+  min-height: 0;
+}
+
+.note-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #202124;
+  line-height: 1.4;
+  transition: color 0.3s;
+  letter-spacing: -0.01em;
+}
+
+.note-description {
+  font-size: 0.95rem;
+  color: #5f6368;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #666;
+  flex-shrink: 0;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+.note-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.note-icon {
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 2px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.note-icon:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.note-date {
+  color: #999;
+  font-size: 0.8rem;
+  transition: color 0.3s;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+/* ============================================
+   9. FLOATING ACTION BUTTON (FAB)
+   ============================================ */
+
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.fab:active {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .fab {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.75rem;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 400px) {
+  .fab {
+    bottom: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================
+   10. MODAL
+   ============================================ */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+  margin: auto;
+}
+
+.modal-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title-input {
+  font-family: "Space Grotesk", sans-serif;
+  flex: 1;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  padding: 8px 0;
+  outline: none;
+  color: #202124;
+  transition: color 0.3s;
+}
+
+.modal-title-input::placeholder {
+  color: #999;
+}
+
+.modal-title-input:focus {
+  outline: none;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #5f6368;
+  padding: 8px;
+  margin: -8px;
+  line-height: 1;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #202124;
+}
+
+.modal-body {
+  padding: 0 16px 16px;
+}
+
+.form-input {
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  color: #202124;
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+#noteTitle,
+#noteDescription {
+  background: transparent;
+  transition: background-color 0.3s ease;
+}
+
+#noteTitle:focus,
+#noteDescription:focus {
+  outline: none;
+}
+
+.modal-footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid #e0e0e0;
+  transition: border-color 0.3s;
+}
+
+.color-picker {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.color-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+  padding: 0;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.color-circle.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #202124;
+}
+
+.color-circle:first-child {
+  border-color: #e0e0e0;
+}
+
+.color-circle:first-child.active {
+  border-color: #202124;
+}
+
+.modal-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon {
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  background: none;
+  border: none;
+  padding: 6px;
+  margin: -2px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.modal-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-icon.danger:hover {
+  opacity: 1;
+  background: rgba(217, 48, 37, 0.1);
+}
+
+.modal-footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px 12px;
+  font-size: 12px;
+  color: #5f6368;
+  transition: color 0.3s;
+}
+
+.note-dates {
+  line-height: 1.6;
+}
+
+.note-dates div {
+  margin: 2px 0;
+}
+
+.modal-actions-final {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a73e8;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-link:hover {
+  background: rgba(26, 115, 232, 0.1);
+}
+
+.btn-save {
+  color: #1a73e8;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-width: 100%;
+  }
+
+  .modal-footer-main {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .modal-footer-info {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================
+   11. FORMS & AUTH PAGES
+   ============================================ */
+
+.form-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.form-title {
+  font-family: "Space Grotesk", sans-serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #202124;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: color 0.3s;
+}
+
+.form-group {
+  margin-bottom: 0.75rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #202124;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.875rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s,
+    background-color 0.3s,
+    color 0.3s;
+  color: #202124;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  font-family: "IBM Plex Sans", sans-serif;
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #1557b0;
+}
+
+.btn-link {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.btn-link:hover {
+  color: #1557b0;
+}
+
+.error {
+  color: #dc3545;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #f8d7da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: #155724;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #d4edda;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   12. TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #323232;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toast.active {
+  opacity: 1;
+}
+
+/* ============================================
+   13. UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   14. PROFILE ICON
+   ============================================ */
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  object-fit: cover;
+}
+
+.profile-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   15. DARK MODE TOGGLE (AUTH PAGES)
+   ============================================ */
+
+.dark-mode-toggle {
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+  user-select: none;
+}
+
+.dark-mode-toggle:hover {
+  color: #1a73e8;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .dark-mode-toggle {
+  color: #e8eaed;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+  color: #8ab4f8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   16. PROFILE PAGE
+   ============================================ */
+
+.profile-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .profile-header {
+  background: #3c4043;
+}
+
+.profile-pic-wrapper {
+  flex-shrink: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-pic-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.profile-pic-large:hover {
+  border-color: #1a73e8;
+  transform: scale(1.02);
+}
+
+body.dark-mode .profile-pic-large {
+  border-color: #5f6368;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 0.25rem 0;
+}
+
+body.dark-mode .profile-name {
+  color: #ffffff;
+}
+
+.profile-email {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.25rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.dark-mode .profile-email {
+  color: #9aa0a6;
+}
+
+.profile-member {
+  font-size: 0.8rem;
+  color: #999;
+  margin: 0;
+}
+
+body.dark-mode .profile-member {
+  color: #80868b;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .stats-row {
+  background: #3c4043;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a73e8;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+body.dark-mode .stat-value {
+  color: #8ab4f8;
+}
+
+.stat-text {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.dark-mode .stat-text {
+  color: #9aa0a6;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: #e0e0e0;
+}
+
+body.dark-mode .stat-divider {
+  background: #5f6368;
+}
+
+/* Cards */
+.profile-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .profile-card {
+  background: #3c4043;
+}
+
+.card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+body.dark-mode .card-title {
+  color: #ffffff;
+  border-bottom-color: #5f6368;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-col label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #202124;
+}
+
+body.dark-mode .form-col label {
+  color: #e8eaed;
+}
+
+.form-col input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+body.dark-mode .form-col input {
+  background: #202124;
+  border-color: #5f6368;
+  color: #ffffff;
+}
+
+.form-col input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.btn-primary {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background: #1557b0;
+}
+
+body.dark-mode .btn-primary {
+  background: #8ab4f8;
+  color: #202124;
+}
+
+body.dark-mode .btn-primary:hover {
+  background: #aecbfa;
+}
+
+/* Alerts */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.alert.error {
+  background: #f8d7da;
+  color: #dc3545;
+}
+
+.alert.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+body.dark-mode .alert.error {
+  background: rgba(250, 128, 114, 0.2);
+  color: #fa8072;
+}
+
+body.dark-mode .alert.success {
+  background: rgba(138, 180, 248, 0.2);
+  color: #8ab4f8;
+}
+
+/* Delete profile photo button */
+.delete-photo-form {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  z-index: 10;
+}
+
+.delete-photo-btn {
+  width: 20px;
+  height: 20px;
+  background: rgba(220, 53, 69, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.delete-photo-btn:hover {
+  background: #dc3545;
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .profile-header,
+  .profile-card {
+    padding: 1rem;
+  }
+
+  .profile-pic-large {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* ============================================
+   17. HELP PAGE
+   ============================================ */
+
+.help-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.help-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.help-header h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 0.5rem 0;
+}
+
+body.dark-mode .help-header h1 {
+  color: #ffffff;
+}
+
+.help-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+body.dark-mode .help-header p {
+  color: #9aa0a6;
+}
+
+.help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.help-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .help-section {
+  background: #3c4043;
+}
+
+.help-section h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+body.dark-mode .help-section h2 {
+  color: #ffffff;
+  border-bottom-color: #5f6368;
+}
+
+.help-item {
+  margin-bottom: 1.5rem;
+}
+
+.help-item:last-child {
+  margin-bottom: 0;
+}
+
+.help-item h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 0.5rem 0;
+}
+
+body.dark-mode .help-item h3 {
+  color: #e8eaed;
+}
+
+.help-item p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+body.dark-mode .help-item p {
+  color: #9aa0a6;
+}
+
+.help-item ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.help-item ul li {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+body.dark-mode .help-item ul li {
+  color: #9aa0a6;
+}
+
+@media (max-width: 600px) {
+  .help-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .help-header h1 {
+    font-size: 2rem;
+  }
+
+  .help-section {
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   18. LUCIDE ICONS
+   ============================================ */
+
+.note-icon,
+.modal-icon,
+.section-icon {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.note-icon:hover,
+.modal-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.note-icon.danger,
+.modal-icon.danger {
+  color: #dc3545;
+}
+
+.note-icon.danger:hover,
+.modal-icon.danger:hover {
+  color: #bd2130;
+}
+
+.section-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 8px;
+  vertical-align: middle;
+  opacity: 1;
+}
+
+/* Tooltip wrapper - for note cards */
+.icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.icon-wrapper:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  margin-bottom: 6px;
+}
+
+/* Icons inside wrappers - enable clicks */
+.icon-wrapper .modal-icon,
+.icon-wrapper .note-icon {
+  pointer-events: auto;
+}
+
+.icon-wrapper .modal-icon svg,
+.icon-wrapper .note-icon svg {
+  pointer-events: auto;
+  cursor: pointer;
+  display: block;
+}
+
+/* Modal icons container */
+.modal-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icons .modal-icon {
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.modal-icons .modal-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.modal-icons .modal-icon.danger {
+  color: #dc3545;
+}
+
+.modal-icons .modal-icon.danger:hover {
+  color: #bd2130;
+}
+
+/* Tooltip for modal icons */
+.modal-icons .modal-icon[data-tooltip] {
+  position: relative;
+}
+
+.modal-icons .modal-icon[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  margin-bottom: 6px;
+}
+
+/* Note footer icons */
+.note-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.note-icons .note-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
