@@ -22,7 +22,7 @@ $unpinnedNotes = array_filter($notes, function ($note) {
     return $note['is_pinned'] == 0;
 });
 
-$pageTitle = "My Notes";
+$pageTitle = "My Notes - ".  SITE_NAME;
 include 'includes/header.php';
 ?>
 
@@ -217,9 +217,17 @@ include 'includes/header.php';
             </div>
 
             <div class="modal-icons">
-                <button type="button" id="pinBtn" class="modal-icon-btn" title="Pin">📌</button>
-                <button type="button" id="archiveBtn" class="modal-icon-btn" title="Archive">📦</button>
-                <button type="button" id="deleteBtn" class="modal-icon-btn danger" title="Delete">🗑️</button>
+                <button type="button" id="pinBtn" class="modal-icon-btn " title="Pin">
+                    <i data-lucide="pin" class="modal-icon"></i>
+                </button>
+
+                <button type="button" id="archiveBtn" class="modal-icon-btn " title="Archive">
+                    <i data-lucide="archive" class="modal-icon"></i>
+                </button>
+
+                <button type="button" id="deleteBtn" class="modal-icon-btn danger" title="Delete">
+                    <i data-lucide="trash-2" class="modal-icon"></i>
+                </button>
             </div>
         </div>
 

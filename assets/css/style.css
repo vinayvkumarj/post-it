@@ -569,6 +569,7 @@ body.dark-mode .footer {
   .notes-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
+    padding: 0 20px;
   }
 }
 
@@ -1799,8 +1800,8 @@ body.dark-mode .help-item ul li {
 }
 
 .modal-icons .modal-icon {
-  width: 24px !important;
-  height: 24px !important;
+  width: 28px !important;
+  height: 28px !important;
   cursor: pointer;
   opacity: 0.7;
   transition:
@@ -1857,4 +1858,37 @@ body.dark-mode .help-item ul li {
 .note-icons .note-icon {
   width: 18px !important;
   height: 18px !important;
+}
+
+/* Modal icon buttons */
+.modal-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.modal-icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal-icon-btn.danger:hover {
+    background-color: rgba(220, 38, 38, 0.1);
+}
+
+/* Icon size inside modal */
+.modal-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/* Danger icon color */
+.modal-icon-btn.danger .modal-icon {
+    color: #dc2626;
 }

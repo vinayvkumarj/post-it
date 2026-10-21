@@ -1,4 +1,7 @@
 <?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 require 'config/config.php';
 
 // Redirect if already logged in
@@ -22,11 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($password) < 6) {
         $error = 'Password must be at least 6 characters';
     } else {
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->execute([$email]);
+        $stmt = $conn->prepare("SELECT id, email, username FROM users WHERE email = ? OR username = ?");
+        $stmt->execute([$email, $name]);
 
-        if ($stmt->fetch()) {
-            $error = 'Email already registered';
+        $existing = $stmt->fetch();
+
+        if ($existing) {
+            if ($existing['email'] === $email) {
+                $error = 'Email already registered';
+            } else {
+                $error = 'Username already taken';
+            }
         } else {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");

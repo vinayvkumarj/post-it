@@ -294,22 +294,29 @@ document.addEventListener("DOMContentLoaded", function () {
       noteDates.style.display = "none";
     }
 
-    // Update pin button icon and tooltip
+    // ✅ Update pin button icon and tooltip (using Lucide SVG)
     if (pinned == 1) {
-      pinBtn.textContent = "📍";
+      pinBtn.innerHTML = '<i data-lucide="pin-off" class="modal-icon"></i>';
       pinBtn.title = "Unpin";
     } else {
-      pinBtn.textContent = "📌";
+      pinBtn.innerHTML = '<i data-lucide="pin" class="modal-icon"></i>';
       pinBtn.title = "Pin";
     }
 
-    // Update archive button tooltip based on page
+    // ✅ Update archive button icon and tooltip (using Lucide SVG)
     if (currentPage === "archive") {
-      archiveBtn.textContent = "📥";
+      archiveBtn.innerHTML =
+        '<i data-lucide="archive-restore" class="modal-icon"></i>';
       archiveBtn.title = "Unarchive";
     } else {
-      archiveBtn.textContent = "📦";
+      archiveBtn.innerHTML =
+        '<i data-lucide="archive" class="modal-icon"></i>';
       archiveBtn.title = "Archive";
+    }
+
+    // ✅ CRITICAL: Re-render Lucide icons after changing innerHTML
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
     }
 
     noteModal.classList.add("active");

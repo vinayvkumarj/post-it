@@ -7,7 +7,7 @@ require_once __DIR__ . '/database.php';
 
 // SITE CONFIG
 define('SITE_NAME', 'Post It');
-define('SITE_URL', 'http://localhost/notes-app/');
+define('SITE_URL', 'https://postit.infinityfree.me/');
 define('UPLOAD_DIR', __DIR__ . '/../assets/uploads/');
 define('MAX_FILE_SIZE', 2097152); // 2MB
 
@@ -73,11 +73,32 @@ function isValidPassword($password)
 // Get current user ID
 function getCurrentUserId()
 {
-    return $_SESSION['user_id'] ?? null;
+    if (is_array($_SESSION) && isset($_SESSION['user_id'])) {
+        return $_SESSION['user_id'];
+    }
+    return null;
 }
 
 // Get current username
 function getCurrentUsername()
 {
-    return $_SESSION['username'] ?? null;
+    if (is_array($_SESSION) && isset($_SESSION['username'])) {
+        return $_SESSION['username'];
+    }
+    return null;
 }
+
+// In config.php or header.php
+function getCurrentUserData($conn) {
+    if (!isset($_SESSION['user_data'])) {
+        $stmt = $conn->prepare("SELECT id, username, email, profile_photo FROM users WHERE id = ?");
+        $stmt->execute([getCurrentUserId()]);
+        $_SESSION['user_data'] = $stmt->fetch();
+    }
+    return $_SESSION['user_data'];
+}
+
+// Usage in header.php
+$userData = getCurrentUserData($conn);
+$profilePic = !empty($userData['profile_photo']) ? SITE_URL . 'assets/uploads/profiles/' . e($userData['profile_photo']) : SITE_URL . 'assets/uploads/default.png';
+$username = $userData['username'];
